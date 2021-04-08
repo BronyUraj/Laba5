@@ -3,61 +3,75 @@
 using namespace std;
 
 
-Queue::Queue(int value) {
-	Node* temp = new Node;
-	temp->value = value;
-	temp->ptr = nullptr;
-	head = tail = temp;
-	size++;
+Node::Node(int value) {
+	this->value = value;
+	this->ptr = nullptr;
 }
-//Queue::~Queue(){
-//	
-//}
-Queue::Queue(const Queue& other) {
-	Node* temp = other.tail;
-	Queue qtemp = temp->value;
-	temp = temp->ptr;
-	while (temp != other.head) {
-		qtemp.push(temp->value);
-		temp = temp->ptr;
-	}
-	qtemp.push(temp->value);
-	temp = qtemp.tail;
-	this->push(temp->value);
-	this->head = temp;
-	temp = temp->ptr;
-	while (temp != qtemp.head) {
-		this->push(temp->value);
-		temp = temp->ptr;
-	}
-	this->push(temp->value);
-	this->tail = temp;
-	this->size = other.size;
+Queue::Queue() {
+	this->front = nullptr;
+	this->rear = nullptr;
 }
-void Queue::push(int value) {
-	Node* temp = new Node;
-	temp->value = value;
-	temp->ptr = tail;
-	this->tail = temp;
-	size++;
 
+Queue::Queue(int value) {
+	this->push(value);
+}
+Queue::~Queue(){
+	while (this->size > 1) {
+		this->pop();
+	}
+	delete rear;
+}
+//Queue::Queue(const Queue& other) {
+//	Node* temp = other.tail;
+//	Node* tempnext = other.head;
+//	this->head->value = other.head->value;
+//	this->head->ptr = nullptr;
+//	while ()
+//	//Queue qtemp = temp->value;
+//	//temp = temp->ptr;
+//	//while (temp != other.head) {
+//	//	qtemp.push(temp->value);
+//	//	temp = temp->ptr;
+//	//}
+//	//qtemp.push(temp->value);
+//	//temp = qtemp.tail;
+//	//this->push(temp->value);
+//	//temp = temp->ptr;
+//	//while (temp != qtemp.head) {
+//	//	this->push(temp->value);
+//	//	temp = temp->ptr;
+//	//}
+//	//this->push(temp->value);
+//}
+
+
+void Queue::push(int value) {
+	Node* temp = new Node(value);
+	if (rear == nullptr) {
+		front = rear = temp;
+		return;
+	}
+	this->rear->ptr = temp;
+	this->rear = temp;
+	size++;
 }
 int Queue::pop() {
-	Node* temp = tail;
-	while (temp->ptr != head) {
-		temp = temp->ptr;
-	}
-	int res = head->value;
-	delete head;
-	head = temp;
+	if (front == nullptr)
+		return NULL;
+	Node* temp = front;
+	this->front = front->ptr;
+	if (front == nullptr)
+		rear = nullptr;
+	int res = temp->value;
+	delete temp;
 	size--;
 	return res;
 }
-Node* Queue::GetHead() {
-	return head;
+Node* Queue::GetFront() {
+	return this->front;
 }
-Node* Queue::GetTail() {
-	return tail;
+Node* Queue::GetRear() {
+	return this->rear;
 }
 
 int Queue::GetSize() {

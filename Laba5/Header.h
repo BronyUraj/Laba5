@@ -1,15 +1,18 @@
 struct Node {
 	int value;
 	Node* ptr;
+	Node(int value);
 };
 
 class Queue {
-	Node* head;
-	Node* tail;
+	Node* front;
+	Node* rear;
 	int size = 0;
 public:
-	Node* GetHead();
-	Node* GetTail();
+	Node* GetFront();
+	Node* GetRear();
+	Queue();
+	~Queue();
 	int GetSize();
 	Queue(int value);
 	Queue(const Queue& other);
