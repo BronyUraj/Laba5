@@ -24,9 +24,7 @@ Queue::~Queue(){
 }
 Queue::Queue(const Queue& other) {
 	Node* temp = other.front;
-	this->push(temp->value);
-	temp = temp->ptr;
-	for (int i = 1; i < other.size; i++) {
+	for (int i = 1; i <= other.size; i++) {
 		this->push(temp->value);
 		temp = temp->ptr;
 	}
