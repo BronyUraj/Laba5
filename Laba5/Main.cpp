@@ -11,8 +11,11 @@ int main() {
 	cout << Q1.GetRear()->value << " Third" << endl;
 	cout << Q1.GetFront()->value << " Head Before Pop" << endl;
 	cout << Q1.pop() << " Poped" << endl;
-	//Queue Q2(Q1);
-	//cout << Q2.GetHead()->value << endl;
-	//cout << Q2.GetTail()->value << endl;
+	Q1.push(15);
+	Q1.push(16);
+	Q1.push(17);
+	Queue Q2(Q1);
+	cout << Q2.GetRear()->value << endl;
+	cout << Q2.GetFront()->value << endl;
 	return 0;
 }
