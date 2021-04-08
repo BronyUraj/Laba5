@@ -1,6 +1,5 @@
 #include "Header.h"
 #include "iostream"
-
 using namespace std;
 
 
@@ -9,10 +8,11 @@ Queue::Queue(int value) {
 	temp->value = value;
 	temp->ptr = nullptr;
 	head = tail = temp;
+	size++;
 }
-/*~Queue(){
-	delete
-}*/
+//Queue::~Queue(){
+//	
+//}
 Queue::Queue(const Queue& other) {
 	Node* temp = other.tail;
 	Queue qtemp = temp->value;
@@ -32,12 +32,14 @@ Queue::Queue(const Queue& other) {
 	}
 	this->push(temp->value);
 	this->tail = temp;
+	this->size = other.size;
 }
 void Queue::push(int value) {
 	Node* temp = new Node;
 	temp->value = value;
 	temp->ptr = tail;
 	this->tail = temp;
+	size++;
 
 }
 int Queue::pop() {
@@ -48,6 +50,7 @@ int Queue::pop() {
 	int res = head->value;
 	delete head;
 	head = temp;
+	size--;
 	return res;
 }
 Node* Queue::GetHead() {
@@ -55,4 +58,8 @@ Node* Queue::GetHead() {
 }
 Node* Queue::GetTail() {
 	return tail;
+}
+
+int Queue::GetSize() {
+	return this->size;
 }
