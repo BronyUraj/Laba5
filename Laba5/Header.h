@@ -16,6 +16,8 @@ public:
 	int GetSize();
 	Queue(int value);
 	Queue(const Queue& other);
+	Queue(Queue&& other);
+	Queue& operator=(Queue&& other);
 	void push(int value);
 	int pop();
 };

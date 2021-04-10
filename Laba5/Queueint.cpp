@@ -7,6 +7,7 @@ Node::Node(int value) {
 	this->value = value;
 	this->ptr = nullptr;
 }
+
 Queue::Queue() {
 	this->front = nullptr;
 	this->rear = nullptr;
@@ -16,12 +17,14 @@ Queue::Queue(int value) {
 	this->push(value);
 	this->size = 1;
 }
+
 Queue::~Queue(){
 	while (this->size > 1) {
 		this->pop();
 	}
 	delete rear;
 }
+
 Queue::Queue(const Queue& other) {
 	Node* temp = other.front;
 	for (int i = 1; i <= other.size; i++) {
@@ -30,6 +33,14 @@ Queue::Queue(const Queue& other) {
 	}
 }
 
+Queue::Queue(Queue&& other) {
+	this->front = other.front;
+	this->rear = other.rear;
+	this->size = other.size;
+	other.front = nullptr;
+	other.rear = nullptr;
+	other.size = 0;
+}
 
 void Queue::push(const int value) {
 	Node* temp = new Node(value);
@@ -41,6 +52,7 @@ void Queue::push(const int value) {
 	this->rear->ptr = temp;
 	this->rear = temp;
 }
+
 int Queue::pop() {
 	if (front == nullptr)
 		return NULL;
@@ -53,9 +65,13 @@ int Queue::pop() {
 	delete temp;
 	return res;
 }
+
+
+
 Node* Queue::GetFront() {
 	return this->front;
 }
+
 Node* Queue::GetRear() {
 	return this->rear;
 }

@@ -15,6 +15,7 @@ int main() {
 	Q1.push(16);
 	Q1.push(17);
 	Queue Q2(Q1);
+	Queue Q3 = move(Q1);
 	cout << Q2.GetRear()->value << endl;
 	cout << Q2.GetFront()->value << endl;
 	return 0;
