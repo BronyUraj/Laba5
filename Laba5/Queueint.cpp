@@ -98,8 +98,8 @@ ostream& operator<<(ostream& out, const Queue& queue) {
 	return out;
 }
 
-Node* Queue::Peek() {
-	return this->front;
+int Queue::Peek() {
+	return this->front->value;
 }
 
 Node* Queue::GetRear() {

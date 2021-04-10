@@ -11,7 +11,7 @@ class Queue {
 	Node* rear;
 	int size = 0;
 public:
-	Node* Peek();
+	int Peek();
 	Node* GetRear();
 	Queue();
 	~Queue();

@@ -9,7 +9,7 @@ int main() {
 	cout << Q1.GetRear()->value << " Second" << endl;
 	Q1.push(14);
 	cout << Q1.GetRear()->value << " Third" << endl;
-	cout << Q1.Peek()->value << " Head Before Pop" << endl;
+	cout << Q1.Peek() << " Head Before Pop" << endl;
 	cout << Q1.pop() << " Poped" << endl;
 	Q1.push(15);
 	Q1.push(16);
