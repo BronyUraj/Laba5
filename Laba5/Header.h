@@ -1,3 +1,5 @@
+#include <iostream>
+using namespace std;
 struct Node {
 	int value;
 	Node* ptr;
@@ -18,6 +20,8 @@ public:
 	Queue(const Queue& other);
 	Queue(Queue&& other);
 	Queue& operator=(Queue&& other);
+	Queue operator=(const Queue& other);
+	friend ostream& operator<<(ostream& out, const Queue& queue);
 	void push(int value);
 	int pop();
 };

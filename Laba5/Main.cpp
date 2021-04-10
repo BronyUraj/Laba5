@@ -17,9 +17,8 @@ int main() {
 	Queue Q2 = 16;
 	Q2.push(100);
 	Q2.push(600);
-	Q2.pop();
 	Queue Q3 = 11;
-	cout << Q2.GetRear()->value << endl;
-	cout << Q2.Peek()->value << endl;
+	cout << Q2 << endl;
+	cout << Q2 << endl;
 	return 0;
 }

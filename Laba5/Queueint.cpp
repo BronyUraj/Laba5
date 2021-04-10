@@ -79,6 +79,25 @@ Queue& Queue::operator=(Queue&& other) {
 	return *this;
 }
 
+Queue Queue::operator=(const Queue& other) {
+	Node* temp = other.front;
+	for (int i = 1; i <= other.size; i++) {
+		this->push(temp->value);
+		temp = temp->ptr;
+	}
+	return *this;
+}
+
+ostream& operator<<(ostream& out, const Queue& queue) {
+	Node* temp = queue.front;
+	out << temp->value;
+	for (int i = 2; i <= queue.size; i++) {
+		temp = temp->ptr;
+		out << " " << temp->value;
+	}
+	return out;
+}
+
 Node* Queue::Peek() {
 	return this->front;
 }
