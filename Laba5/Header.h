@@ -9,7 +9,7 @@ class Queue {
 	Node* rear;
 	int size = 0;
 public:
-	Node* GetFront();
+	Node* Peek();
 	Node* GetRear();
 	Queue();
 	~Queue();

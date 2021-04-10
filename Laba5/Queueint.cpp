@@ -66,9 +66,20 @@ int Queue::pop() {
 	return res;
 }
 
+Queue& Queue::operator=(Queue&& other) {
+	if (this == &other) {
+		return *this;
+	}
+	
+	this->rear = other.rear;
+	this->front = other.front;
+	other.rear = nullptr;
+	other.front = nullptr;
+	other.size = 0;
+	return *this;
+}
 
-
-Node* Queue::GetFront() {
+Node* Queue::Peek() {
 	return this->front;
 }
 
